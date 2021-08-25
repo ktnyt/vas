@@ -7,12 +7,14 @@ import { SurveyPage } from "pages/SurveyPage";
 
 import { CssBaseline, Typography } from "@material-ui/core";
 
+const ROOT_ROUTE = process.env.NODE_ENV === "development" ? "/" : "/vas";
+
 const App = () => {
   const [config, setConfig] = useLocalStorage<Config>("config", defaultConfig);
 
   return (
     <CssBaseline>
-      <Router>
+      <Router basename={ROOT_ROUTE}>
         <Switch>
           <Route exact path="/">
             <HomePage config={config} />
